@@ -1,0 +1,52 @@
+Field,Metric Type,Label,Score
+Number of Bedrooms,precision,1,0.8928571428571429
+Number of Bedrooms,precision,2,0.6666666666666666
+Number of Bedrooms,precision,not specified,1.0
+Number of Bedrooms,precision,3,0.8333333333333334
+Number of Bedrooms,recall,1,0.8928571428571429
+Number of Bedrooms,recall,2,0.9
+Number of Bedrooms,recall,not specified,0.2727272727272727
+Number of Bedrooms,recall,3,1.0
+Number of Bedrooms,f1_score,1,0.8928571428571429
+Number of Bedrooms,f1_score,2,0.7659574468085106
+Number of Bedrooms,f1_score,not specified,0.42857142857142855
+Number of Bedrooms,f1_score,3,0.9090909090909091
+Type of Property,precision,apartment,0.6885245901639344
+Type of Property,precision,room,0.42857142857142855
+Type of Property,precision,loft,1.0
+Type of Property,precision,not specified,0.6666666666666666
+Type of Property,precision,studio,0.6666666666666666
+Type of Property,recall,apartment,0.84
+Type of Property,recall,room,0.42857142857142855
+Type of Property,recall,loft,0.8333333333333334
+Type of Property,recall,not specified,0.5
+Type of Property,recall,studio,1.0
+Type of Property,f1_score,apartment,0.7567567567567568
+Type of Property,f1_score,room,0.42857142857142855
+Type of Property,f1_score,loft,0.9090909090909091
+Type of Property,f1_score,not specified,0.5714285714285715
+Type of Property,f1_score,studio,0.8
+Is any space shared?,precision,false,0.8539325842696629
+Is any space shared?,precision,true,0.6451612903225806
+Is any space shared?,precision,not specified,0.0
+Is any space shared?,recall,false,0.9156626506024096
+Is any space shared?,recall,true,0.7407407407407407
+Is any space shared?,recall,not specified,0.0
+Is any space shared?,f1_score,false,0.883720930232558
+Is any space shared?,f1_score,true,0.689655172413793
+Is any space shared?,f1_score,not specified,0.0
+Overall vibes/atmosphere,precision,comfortable,0.6326530612244898
+Overall vibes/atmosphere,precision,artsy,0.7333333333333333
+Overall vibes/atmosphere,precision,modern,0.3793103448275862
+Overall vibes/atmosphere,precision,plain,0.0
+Overall vibes/atmosphere,precision,chic,0.2
+Overall vibes/atmosphere,recall,comfortable,0.6595744680851063
+Overall vibes/atmosphere,recall,artsy,0.5238095238095238
+Overall vibes/atmosphere,recall,modern,0.5789473684210527
+Overall vibes/atmosphere,recall,plain,0.0
+Overall vibes/atmosphere,recall,chic,0.2222222222222222
+Overall vibes/atmosphere,f1_score,comfortable,0.6458333333333333
+Overall vibes/atmosphere,f1_score,artsy,0.611111111111111
+Overall vibes/atmosphere,f1_score,modern,0.45833333333333337
+Overall vibes/atmosphere,f1_score,plain,0.0
+Overall vibes/atmosphere,f1_score,chic,0.2105263157894737
