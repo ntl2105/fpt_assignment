@@ -121,8 +121,8 @@ Output: Qualitative Explanation of error patterns that are fixable
   - **Overall**: 
     - Accuracy, precision, recall, F1 scores for each of the attributes.
     - ![Analysis Chart](eval_results/aggregate_results/accuracy_metrics_chart.png)
-    - ## Analysis Highlights
 
+## Analysis Highlights
 ### Accuracy
 - **Highest**: `results_3point5_ft_detailedInstr` and `davinci_epoch3_result_detailedInstr` both show the highest accuracies for "Number of Bedrooms". This indicates that these models are particularly effective in identifying the correct number of bedrooms.
 - **Consistency**: `babbage-002_epoch4_result` consistently shows high accuracy across all attributes, making it one of the most reliable models.
@@ -153,7 +153,34 @@ Output: Qualitative Explanation of error patterns that are fixable
   - **Property Type**: Accuracy, precision, recall, F1 scores for labels "home", "apartment" (the most common types)
     ![Analysis Chart](eval_results/aggregate_results/metrics_type_of_property_confusion_matrix.png)
   - **Shared**: precision, recall, F1 scores
-    ![Analysis Chart](eval_results/aggregate_results/metrics_is_any_space_shared?_confusion_matrix.png)
+    ![Analysis Chart](eval_results/aggregate_results/metrics_is_any_space_shared_confusion_matrix.png)
   - **Vibe**: precision, recall, F1 scores for each label (modern, artsy, comfortable, historic, plain), Confusion Matrix
     ![Analysis Chart](eval_results/aggregate_results/metrics_overall_vibesatmosphere_confusion_matrix.png)
-    
+
+## Analysis Highlights
+
+### Number of Bedrooms
+- **High Precision & Recall**: Strong performance for explicit descriptions like exact bedroom numbers.
+- **Ambiguity Challenge**: Mixed results for "not specified" cases, indicating difficulties in ambiguous contexts.
+
+### Type of Property
+- **Strong Recognition**: High precision and recall for "apartment" and "loft," especially in Babbage and Davinci models.
+- **Weakness**: Lower scores for "studio not specified," highlighting challenges in distinguishing unspecified studio types.
+
+### Is any space shared?
+- **High Precision for False**: Models reliably identify non-shared spaces.
+- **Recall Variation**: Lower recall for "true" suggests missed mentions of shared spaces.
+
+### Overall Vibes/Atmosphere
+- **Best Performance**: "Artsy" and "comfortable" receive higher scores, likely due to distinct training data representation.
+- **Subjectivity Issues**: "Chic" and "plain" exhibit low precision and recall, pointing to difficulties with subjective descriptions.
+
+### Key Observations
+- **Model Consistency**: Babbage-002 and Davinci show robustness across various attributes, suitable for accurate property description tasks.
+- **Subjectivity Challenge**: Lower performance on subjective or less defined attributes underscores the need for enhanced training or refined post-processing.
+
+### Recommendations
+- **Optimal Model Usage**: Employ Babbage-002 and Davinci for critical accuracy needs, especially for well-represented attributes.
+- **Enhanced Training**: Broader training datasets could improve recognition of rarer or subjective descriptions.
+- **Post-Processing Improvements**: Additional steps to address ambiguities may improve metrics in challenging labels.
+
