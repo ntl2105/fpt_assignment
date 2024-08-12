@@ -69,7 +69,6 @@ Please structure your findings in a JSON format to maintain clarity and ease of 
 """
 
 def fix_and_separate_jsons(malformed_json):
-    import json 
     """
     Takes in the raw text output from the LLM, 
     1) loads it in json format, if no error, return json and status "Perfect"
