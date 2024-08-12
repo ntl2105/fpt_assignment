@@ -120,10 +120,35 @@ Output: Qualitative Explanation of error patterns that are fixable
 - **Required Information Evaluation**:
   - **Overall**: 
     - Accuracy, precision, recall, F1 scores for each of the attributes.
-    - 
-    - Attributes-specific metrics: 
-      - **Number of Bedrooms**: Accuracy, precision, recall, F1 scores for labels 1,2 (the most common types)
-      - **Property Type**: Accuracy, precision, recall, F1 scores for labels "home", "apartment" (the most common types)
-      - **Shared**: precision, recall, F1 scores
-      - **Vibe**: precision, recall, F1 scores for each label (modern, artsy, comfortable, historic, plain), Confusion Matrix 
+    - ## Analysis Highlights
+
+### Accuracy
+- **Highest**: `results_3point5_ft_detailedInstr` and `davinci_epoch3_result_detailedInstr` both show the highest accuracies for "Number of Bedrooms". This indicates that these models are particularly effective in identifying the correct number of bedrooms.
+- **Consistency**: `babbage-002_epoch4_result` consistently shows high accuracy across all attributes, making it one of the most reliable models.
+
+### F1 Score
+- **Strengths**: `babbage-002_epoch4_result` and `babbage-002_epoch4_result_detailedInstr` stand out with relatively high F1 scores, especially for "Number of Bedrooms", which suggests a good balance between precision and recall.
+- **Weaknesses**: The "Overall vibes/atmosphere" attribute consistently has lower F1 scores, indicating difficulty in balancing precision and recall, likely due to the subjective nature of the attribute.
+
+### Precision
+- **Peak Performance**: `results_3point5_ft_detailedInstr` shows the highest precision for "Is any space shared?", which is critical for applications needing high reliability in detecting shared spaces.
+- **Variability**: While `babbage-002_epoch4_result` has the highest precision for "Number of Bedrooms", it shows lower precision for more subjective attributes like "Overall vibes/atmosphere".
+
+### Recall
+- **Highest Recall**: `results_3point5_og_detailedInstr` shows surprisingly high recall for "Number of Bedrooms", suggesting it is good at catching all relevant instances but might be prone to false positives (as seen in lower precision).
+- **Consistency**: `babbage-002_epoch4_result` maintains fairly consistent and high recall across most attributes, which is beneficial when it’s important not to miss any true cases.
+
+### Detailed Insights
+- **Attribute Challenges**: The "Overall vibes/atmosphere" attribute consistently scores lower across all models and metrics, indicating it as a challenging attribute to model accurately. This might require more nuanced training data or more sophisticated natural language processing techniques.
+
+### Model Recommendations
+- For applications prioritizing accuracy and reliability across varied attributes, the `babbage-002_epoch4_result` appears to be the best overall performer.
+- If recall is critical (ensuring no instance of a particular attribute is missed), `results_3point5_og_detailedInstr` and `babbage-002_epoch4_result` would be strong candidates, especially for detecting "Number of Bedrooms".
+- For tasks where precision is more critical than recall, such as when false positives have a higher cost than false negatives, `results_3point5_ft_detailedInstr` should be considered, especially for determining shared spaces.
+
+### Digging deeper: Attributes-specific metrics: 
+  - **Number of Bedrooms**: Accuracy, precision, recall, F1 scores for labels 1,2 (the most common types)
+  - **Property Type**: Accuracy, precision, recall, F1 scores for labels "home", "apartment" (the most common types)
+  - **Shared**: precision, recall, F1 scores
+  - **Vibe**: precision, recall, F1 scores for each label (modern, artsy, comfortable, historic, plain), Confusion Matrix 
     
