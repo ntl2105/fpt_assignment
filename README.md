@@ -3,6 +3,9 @@
 ## TL;DR
 Fine-tune a pre-trained LLM (Large Language Model) to convert unstructured data (natural language text) into structured data (JSON format) for various business use cases.
 
+## App Demo
+Follow this link to test the application: https://ntl2105-fpt-assignment-model-tester-streamlit-appapp-e3chlz.streamlit.app/
+
 ## Business Use Case
 Transforming unstructured text into structured data by extracting or inferring relevant information. The relevance is determined by specific needs.
 
@@ -99,13 +102,25 @@ Models to be evaluated: 6 fine-tuned models, base GPT-3.5 Turbo
   - ```Fixable``` Model output is not a json format, but contains predictable error patterns that can be systematically addressed and turn into a usable json format
   - ```Unfixable``` Model output is not a json format, and can't yet be automaticaly fixed
 Output: Percentage (%) of each of these for the whole test set
+
+Below is a breakdown of json statuses across different models:
+
+| json_status   |   babbage-002 epoch3 |   babbage-002 epoch3 detailedInstr |   babbage-002 epoch4 |   babbage-002 epoch4 detailedInstr |   davinci epoch3 detailedInstr |   gpt3.5-turbo-finetuned detailedInstr|   gpt3.5-turbo-original detailedInstr |
+|:--------------|----------------------------:|------------------------------------------:|----------------------------:|------------------------------------------:|--------------------------------------:|-----------------------------------:|-----------------------------------:|
+| Fixable       |                    0.733333 |                                       0.9 |                           1 |                                         1 |                                     1 |                                  0 |                                  0 |
+| Perfect       |                    0.266667 |                                       0.1 |                           0 |                                         0 |                                     0 |                                  1 |                                  1 |
+
+This table provides a clear overview of the performance metrics.
+
 Output: Qualitative Explanation of error patterns that are fixable 
 - **Relevancy of Returned Answers**:
   - How often was each expected field returned? Outout: Percentage(%) of identification for each attribute. Will count as TRUE even if column name isn't an exact match. 
-  - Did the output contain information not asked for? Output: Distribution of labels for each attribute. 
+  - Did the output contain information not asked for? Output: Distribution of labels for each attribute.
+    
 - **Required Information Evaluation**:
   - **Overall**: 
     - Accuracy, precision, recall, F1 scores for each of the attributes.
+    - 
     - Attributes-specific metrics: 
       - **Number of Bedrooms**: Accuracy, precision, recall, F1 scores for labels 1,2 (the most common types)
       - **Property Type**: Accuracy, precision, recall, F1 scores for labels "home", "apartment" (the most common types)
