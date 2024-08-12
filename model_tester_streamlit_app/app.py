@@ -178,6 +178,7 @@ def get_generated_text(formatted_user_data, model='ft:gpt-3.5-turbo-0125:persona
 
 # Streamlit app layout
 st.title("Airbnb Listing Extractor")
+st.write("We turn your airbnb listing into structured data!")
 
 # Define your text options
 text_options = {
