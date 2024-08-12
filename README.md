@@ -120,6 +120,7 @@ Output: Qualitative Explanation of error patterns that are fixable
 - **Required Information Evaluation**:
   - **Overall**: 
     - Accuracy, precision, recall, F1 scores for each of the attributes.
+    - ![Analysis Chart](eval_results/aggregate_results/accuracy_metrics_chart.png)
     - ## Analysis Highlights
 
 ### Accuracy
@@ -148,7 +149,11 @@ Output: Qualitative Explanation of error patterns that are fixable
 
 ### Digging deeper: Attributes-specific metrics: 
   - **Number of Bedrooms**: Accuracy, precision, recall, F1 scores for labels 1,2 (the most common types)
+    ![Analysis Chart](eval_results/aggregate_results/metrics_number_of_bedrooms_confusion_matrix.png)
   - **Property Type**: Accuracy, precision, recall, F1 scores for labels "home", "apartment" (the most common types)
+    ![Analysis Chart](eval_results/aggregate_results/metrics_type_of_property_confusion_matrix.png)
   - **Shared**: precision, recall, F1 scores
-  - **Vibe**: precision, recall, F1 scores for each label (modern, artsy, comfortable, historic, plain), Confusion Matrix 
+    ![Analysis Chart](eval_results/aggregate_results/metrics_is_any_space_shared?_confusion_matrix.png)
+  - **Vibe**: precision, recall, F1 scores for each label (modern, artsy, comfortable, historic, plain), Confusion Matrix
+    ![Analysis Chart](eval_results/aggregate_results/metrics_overall_vibesatmosphere_confusion_matrix.png)
     
