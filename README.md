@@ -1,4 +1,4 @@
-# FPT_Assignment
+# FPT Assignment
 
 ## TL;DR
 Fine-tune a pre-trained LLM (Large Language Model) to convert unstructured data (natural language text) into structured data (JSON format) for various business use cases.
@@ -122,30 +122,34 @@ Output: Qualitative Explanation of error patterns that are fixable
     - Accuracy, precision, recall, F1 scores for each of the attributes.
     - ![Analysis Chart](eval_results/aggregate_results/accuracy_metrics_chart.png)
 
-## Analysis Highlights
-### Accuracy
-- **Highest**: `results_3point5_ft_detailedInstr` and `davinci_epoch3_result_detailedInstr` both show the highest accuracies for "Number of Bedrooms". This indicates that these models are particularly effective in identifying the correct number of bedrooms.
-- **Consistency**: `babbage-002_epoch4_result` consistently shows high accuracy across all attributes, making it one of the most reliable models.
+### Revised Analysis of Accuracy Table with Context:
 
-### F1 Score
-- **Strengths**: `babbage-002_epoch4_result` and `babbage-002_epoch4_result_detailedInstr` stand out with relatively high F1 scores, especially for "Number of Bedrooms", which suggests a good balance between precision and recall.
-- **Weaknesses**: The "Overall vibes/atmosphere" attribute consistently has lower F1 scores, indicating difficulty in balancing precision and recall, likely due to the subjective nature of the attribute.
+1. **Number of Bedrooms:**
+   - **Top Performers:** `results_3point5_ft_detailedInstr` and `davinci_epoch3_result_detailedInstr` both achieve the highest accuracy of **0.85**. These models have been fine-tuned with detailed instructions, emphasizing their ability to accurately extract straightforward numerical data when given more context.
+   - **Consistent Accuracy:** `babbage-002_epoch4_result` also shows strong performance with an accuracy of **0.8417**, suggesting that increasing the number of fine-tuning epochs enhances the model's consistency, even with standard instructions.
+   - **Observation:** This attribute appears to be relatively easier for all models, especially when fine-tuned with detailed instructions.
 
-### Precision
-- **Peak Performance**: `results_3point5_ft_detailedInstr` shows the highest precision for "Is any space shared?", which is critical for applications needing high reliability in detecting shared spaces.
-- **Variability**: While `babbage-002_epoch4_result` has the highest precision for "Number of Bedrooms", it shows lower precision for more subjective attributes like "Overall vibes/atmosphere".
+2. **Type of Property:**
+   - **Close Contenders:** Models with detailed instructions (`results_3point5_ft_detailedInstr`, `babbage-002_epoch3_result_detailedInstr`, and `babbage-002_epoch4_result_detailedInstr`) show similar accuracies ranging from **0.6917** to **0.7083**, indicating that detailed instructions are crucial for accurately classifying categorical data.
+   - **Slight Drop in Performance:** Models with standard instructions, such as `babbage-002_epoch3_result`, have slightly lower accuracy at **0.6583**, while the lowest performer is `results_3point5_og_detailedInstr` at **0.6083**.
+   - **Observation:** Detailed instructions seem to significantly aid in classifying property types, likely due to the variability and complexity of property descriptions.
 
-### Recall
-- **Highest Recall**: `results_3point5_og_detailedInstr` shows surprisingly high recall for "Number of Bedrooms", suggesting it is good at catching all relevant instances but might be prone to false positives (as seen in lower precision).
-- **Consistency**: `babbage-002_epoch4_result` maintains fairly consistent and high recall across most attributes, which is beneficial when it’s important not to miss any true cases.
+3. **Is Any Space Shared?:**
+   - **Highest Accuracy:** The `results_3point5_ft_detailedInstr` model achieves the highest accuracy of **0.8167**, demonstrating the effectiveness of detailed instructions in extracting binary information.
+   - **Stable Performance Across Models:** Most other models, such as `davinci_epoch3_result_detailedInstr` and `babbage-002_epoch4_result`, show slightly lower but still strong accuracies around **0.8**.
+   - **Observation:** This indicates that the "Is Any Space Shared?" attribute is generally well-understood by the models, with detailed instructions slightly enhancing performance.
 
-### Detailed Insights
-- **Attribute Challenges**: The "Overall vibes/atmosphere" attribute consistently scores lower across all models and metrics, indicating it as a challenging attribute to model accurately. This might require more nuanced training data or more sophisticated natural language processing techniques.
+4. **Overall Vibes/Atmosphere:**
+   - **Most Challenging Attribute:** All models show lower accuracies for this attribute, with the highest being **0.575** from `results_3point5_ft_detailedInstr`.
+   - **Lowest Performer:** The `results_3point5_og_detailedInstr` model has the lowest accuracy at **0.3833**, reflecting the difficulty in classifying subjective and nuanced information without fine-tuning or detailed instructions.
+   - **Observation:** This highlights the challenge of extracting subjective data like "Overall Vibes" from unstructured text, where detailed instructions and additional epochs could help, but the attribute remains difficult to predict accurately.
 
-### Model Recommendations
-- For applications prioritizing accuracy and reliability across varied attributes, the `babbage-002_epoch4_result` appears to be the best overall performer.
-- If recall is critical (ensuring no instance of a particular attribute is missed), `results_3point5_og_detailedInstr` and `babbage-002_epoch4_result` would be strong candidates, especially for detecting "Number of Bedrooms".
-- For tasks where precision is more critical than recall, such as when false positives have a higher cost than false negatives, `results_3point5_ft_detailedInstr` should be considered, especially for determining shared spaces.
+### General Observations:
+- **Impact of Detailed Instructions:** Models fine-tuned with detailed instructions generally outperform those with standard instructions, particularly for more complex or subjective attributes.
+- **Importance of Epochs:** Models with additional epochs, like `babbage-002_epoch4_result`, show consistent accuracy improvements, suggesting that more training leads to better generalization.
+- **Performance Across Attributes:** While numerical and binary attributes (Number of Bedrooms, Is Any Space Shared?) are easier to predict, categorical and subjective attributes (Type of Property, Overall Vibes) benefit significantly from detailed instructions and may require further model adjustments to improve accuracy.
+
+This analysis underscores the importance of both the instructions provided during fine-tuning and the number of epochs in improving the model’s performance across various types of data.
 
 ### Digging deeper: Attributes-specific metrics: 
   - **Number of Bedrooms**: Accuracy, precision, recall, F1 scores for labels 1,2 (the most common types)
